@@ -9,7 +9,7 @@ This guide provides step-by-step instructions for deploying the **PONNUS Restaur
 | Component | Configuration | Notes |
 |---|---|---|
 | **Hosting Platform** | Render Free Web Service | Containerized Docker service (0.1 CPU, 512 MB RAM) |
-| **Runtime** | Docker (Multi-stage) | Node 20 (Vite assets) + Composer 2 + PHP 8.3-FPM + Nginx |
+| **Runtime** | Docker (Multi-stage) | Node 20 (Vite assets) + Composer 2 + PHP 8.4-FPM + Nginx |
 | **Web Server** | Nginx + PHP-FPM | Dynamically binds to Render's internal `$PORT` (default 10000) |
 | **Database** | External MySQL-compatible DB | Render free tier does not provide MySQL; use TiDB Cloud, Aiven, or Railway |
 | **HTTPS / Edge SSL** | Render Edge Proxy | Terminated at edge; trusted proxies configured in `bootstrap/app.php` |

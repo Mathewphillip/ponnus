@@ -37,9 +37,9 @@ RUN composer install \
     --ignore-platform-reqs
 
 # ------------------------------------------------------------------------------
-# Stage 3: Production Runtime (PHP 8.3-FPM + Nginx + Supervisor)
+# Stage 3: Production Runtime (PHP 8.4-FPM + Nginx + Supervisor)
 # ------------------------------------------------------------------------------
-FROM php:8.3-fpm-bookworm AS production
+FROM php:8.4-fpm-bookworm AS production
 
 LABEL maintainer="Mathew Phillip <mathew@ponnus.test>"
 LABEL description="Ponnus Restaurant Menu Management System - Production Container for Render"
