@@ -130,6 +130,30 @@ class MenuController extends Controller
     }
 
     /**
+     * Display the public customer-facing menu page (unauthenticated).
+     * Lists all available dishes with optional category filter.
+     */
+    public function publicMenu(Request $request)
+    {
+        // Retrieve optional category filter from query string
+        $category = $request->query('category', 'All');
+
+        // Build the Eloquent query
+        $query = Menu::query();
+
+        if ($category && $category !== 'All') {
+            $query->where('category', $category);
+        }
+
+        $menus = $query->get();
+
+        // Retrieve distinct categories for the filter pills
+        $categories = Menu::select('category')->distinct()->orderBy('category')->pluck('category');
+
+        return view('public.menu', compact('menus', 'categories', 'category'));
+    }
+
+    /**
      * Delete a menu item from the database.
      * Demonstrates record deletion using findOrFail() and delete().
      */

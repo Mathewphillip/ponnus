@@ -3,10 +3,10 @@
     @if (Auth::check())
         <div class="px-3 pb-3 mb-2 border-bottom">
             <div class="d-flex align-items-center gap-2">
-                <img src="{{ asset('chef.jpg') }}" alt="User" class="rounded-circle shadow-sm" style="width: 40px; height: 40px; object-fit: cover;">
-                <div class="text-truncate">
-                    <div class="text-dark fw-bold small text-truncate">{{ Auth::user()->name }}</div>
-                    <span class="badge badge-role" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa;">
+                <img src="{{ asset('chef.jpg') }}" alt="User" class="rounded-circle shadow-sm flex-shrink-0" style="width: 38px; height: 38px; object-fit: cover;">
+                <div style="min-width: 0; line-height: 1.3;">
+                    <div class="text-dark fw-bold small" style="word-break: break-word; white-space: normal;">{{ Auth::user()->name }}</div>
+                    <span class="badge mt-1" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; font-size: 0.7rem;">
                         {{ Auth::user()->role ?? 'Staff' }}
                     </span>
                 </div>
@@ -40,6 +40,14 @@
             <a class="nav-link {{ request()->routeIs('menu.index') ? 'active' : '' }}" href="{{ route('menu.index') }}">
                 <i class="bi bi-plus-circle"></i>
                 <span>Add New Item</span>
+            </a>
+        </li>
+
+        <!-- Public Menu Link -->
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('public.menu') ? 'active' : '' }}" href="{{ route('public.menu') }}" target="_blank">
+                <i class="bi bi-shop"></i>
+                <span>Customer Menu</span>
             </a>
         </li>
 

@@ -50,6 +50,9 @@
                                 <i class="bi bi-grid-1x2 me-1"></i> Dashboard
                             </a>
                         @else
+                            <a href="{{ route('public.menu') }}" class="btn btn-sm btn-outline-secondary px-3">
+                                <i class="bi bi-egg-fried me-1"></i> Our Menu
+                            </a>
                             <a href="{{ route('login') }}" class="btn btn-outline-secondary btn-sm px-3">
                                 <i class="bi bi-box-arrow-in-right me-1"></i> Log in
                             </a>
@@ -84,15 +87,15 @@
                             <a href="{{ route('dashboard') }}" class="btn btn-brand btn-lg px-4 shadow-sm">
                                 <i class="bi bi-grid-1x2 me-2"></i> Go to Dashboard
                             </a>
-                            <a href="{{ route('menu.create') }}" class="btn btn-outline-secondary btn-lg px-4">
-                                <i class="bi bi-card-checklist me-2"></i> View Menu Items
+                            <a href="{{ route('public.menu') }}" class="btn btn-outline-secondary btn-lg px-4">
+                                <i class="bi bi-card-checklist me-2"></i> View Our Menu
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="btn btn-brand btn-lg px-4 shadow-sm">
-                                <i class="bi bi-box-arrow-in-right me-2"></i> Log In
+                            <a href="{{ route('public.menu') }}" class="btn btn-brand btn-lg px-4 shadow-sm">
+                                <i class="bi bi-egg-fried me-2"></i> View Our Menu
                             </a>
-                            <a href="{{ route('register') }}" class="btn btn-outline-secondary btn-lg px-4">
-                                <i class="bi bi-person-plus me-2"></i> Register Account
+                            <a href="{{ route('login') }}" class="btn btn-outline-secondary btn-lg px-4">
+                                <i class="bi bi-box-arrow-in-right me-2"></i> Staff Login
                             </a>
                         @endauth
                     </div>

@@ -20,6 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+// Public customer-facing menu (no authentication required)
+Route::get('/menu', [MenuController::class, 'publicMenu'])->name('public.menu');
+
 /*
 |--------------------------------------------------------------------------
 | Protected Application Routes (Jetstream Authentication & Session)

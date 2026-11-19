@@ -272,4 +272,31 @@ class MenuManagementTest extends TestCase
 
         $response->assertSessionHasErrors(['name', 'category', 'price', 'availability']);
     }
+
+    /**
+     * Test: Public menu page is accessible without authentication.
+     */
+    public function test_public_menu_can_be_viewed_without_authentication(): void
+    {
+        // Visit /menu without logging in
+        $response = $this->get(route('public.menu'));
+
+        $response->assertStatus(200);
+        // assertSee with false skips HTML encoding so the raw string is searched
+        $response->assertSee('Our Menu', false);
+        $response->assertSee('PONNUS', false);
+        $response->assertSee('UGX', false);
+        $response->assertSee('Staff Login', false);
+    }
+
+    /**
+     * Test: Public menu page category filter works correctly.
+     */
+    public function test_public_menu_category_filter_works(): void
+    {
+        $response = $this->get(route('public.menu', ['category' => 'Main Course']));
+
+        $response->assertStatus(200);
+        $response->assertSee('Main Course');
+    }
 }
