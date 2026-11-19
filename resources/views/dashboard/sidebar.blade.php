@@ -51,19 +51,6 @@
             </a>
         </li>
 
-        <!-- Account Section -->
-        <li class="nav-item mt-3">
-            <div class="px-3 py-1 text-uppercase text-muted fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">
-                Settings
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('profile.show') ? 'active' : '' }}" href="{{ route('profile.show') }}">
-                <i class="bi bi-person-gear"></i>
-                <span>Profile Settings</span>
-            </a>
-        </li>
-
         <!-- Logout Action -->
         <li class="nav-item mt-2">
             <form method="POST" action="{{ route('logout') }}">
