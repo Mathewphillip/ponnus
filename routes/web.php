@@ -46,6 +46,9 @@ Route::middleware([
         // create() displays the menu items list
         Route::get('/list', 'create')->name('create');
 
+        // show() displays a single menu item detail page
+        Route::get('/show/{id}', 'show')->name('show');
+
         // edit() displays the edit-menu form
         Route::get('/edit/{id}', 'edit')->name('edit');
 

@@ -75,6 +75,18 @@ class MenuController extends Controller
     }
 
     /**
+     * Display a single menu item details page.
+     * Demonstrates findOrFail() record retrieval and compact() data binding to a detail view.
+     */
+    public function show($id)
+    {
+        // Eloquent ORM: Retrieve the single menu item by ID or throw 404
+        $menu = Menu::findOrFail($id);
+
+        return view('dashboard.show-menu', compact('menu'));
+    }
+
+    /**
      * Display the edit form for an existing menu item.
      */
     public function edit($id)

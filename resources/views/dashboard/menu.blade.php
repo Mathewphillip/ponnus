@@ -90,6 +90,11 @@
                                     </td>
                                     <td class="text-end pe-4">
                                         <div class="btn-group btn-group-sm" role="group">
+                                            <!-- View Details Button -->
+                                            <a href="{{ route('menu.show', $item->id) }}" class="btn btn-outline-info" title="View details">
+                                                <i class="bi bi-eye"></i> View
+                                            </a>
+
                                             <!-- Edit Button -->
                                             <a href="{{ route('menu.edit', $item->id) }}" class="btn btn-outline-primary" title="Edit this item">
                                                 <i class="bi bi-pencil-square"></i> Edit

@@ -367,6 +367,7 @@ Route::middleware([
     Route::controller(MenuController::class)->prefix('menu')->name('menu.')->group(function () {
         Route::get('/create', 'index')->name('index');        // GET /menu/create -> MenuController@index
         Route::get('/list', 'create')->name('create');        // GET /menu/list   -> MenuController@create
+        Route::get('/show/{id}', 'show')->name('show');       // GET /menu/show/1 -> MenuController@show (Single item view)
         Route::get('/edit/{id}', 'edit')->name('edit');       // GET /menu/edit/1 -> MenuController@edit
         Route::post('/store', 'store')->name('store');         // POST /menu/store -> MenuController@store
         Route::put('/update/{id}', 'update')->name('update'); // PUT /menu/update/1 -> MenuController@update
@@ -406,7 +407,8 @@ resources/views/dashboard/
 ├── navbar.blade.php       <-- Top bar with user name, role badge, logout
 ├── sidebar.blade.php      <-- Navigation links to Dashboard & Menu operations
 ├── index.blade.php        <-- Restaurant Dashboard summary cards
-├── menu.blade.php         <-- Menu items list table with edit/delete actions
+├── menu.blade.php         <-- Menu items list table with view/edit/delete actions
+├── show-menu.blade.php    <-- Single menu item detail view page
 ├── add-menu.blade.php     <-- Form for creating a new menu item
 └── edit-menu.blade.php    <-- Form for updating an existing menu item
 ```

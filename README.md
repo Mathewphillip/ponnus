@@ -166,6 +166,7 @@ Once running, access the application in your browser:
 - Uses `Route::controller(MenuController::class)` with named routes:
   - `menu.index` (`GET /menu/create`): Add-menu form *(educational convention)*
   - `menu.create` (`GET /menu/list`): Menu list table *(educational convention)*
+  - `menu.show` (`GET /menu/show/{id}`): Single menu item details page
   - `menu.store` (`POST /menu/store`): Save new item
   - `menu.edit` (`GET /menu/edit/{id}`): Edit-menu form
   - `menu.update` (`PUT /menu/update/{id}`): Update existing item
@@ -184,7 +185,8 @@ Once running, access the application in your browser:
 - `resources/views/dashboard/navbar.blade.php`: Top bar with user name, role badge, profile link, and logout.
 - `resources/views/dashboard/sidebar.blade.php`: Responsive side menu navigation.
 - `resources/views/dashboard/index.blade.php`: Dashboard showing greeting, role badge, metrics, and quick action links.
-- `resources/views/dashboard/menu.blade.php`: Table listing menu items with edit links and delete confirmation modal.
+- `resources/views/dashboard/menu.blade.php`: Table listing menu items with view and edit links and delete confirmation modal.
+- `resources/views/dashboard/show-menu.blade.php`: Detailed view page for an individual menu item with complete metadata.
 - `resources/views/dashboard/add-menu.blade.php`: Add dish form with CSRF protection and validation errors.
 - `resources/views/dashboard/edit-menu.blade.php`: Edit dish form with HTTP `PUT` method spoofing.
 
@@ -198,11 +200,12 @@ To run the automated test suite verifying authentication and CRUD workflows:
 php artisan test tests/Feature/MenuManagementTest.php
 ```
 
-All 10 feature tests verify:
+All 13 feature tests verify:
 - Unauthenticated access rejection on protected routes.
 - Successful authentication of Admin, Staff, and Manager accounts.
-- Listing of all sample dishes.
+- Listing of all sample dishes and viewing single item detail pages.
 - Form rendering, validation error handling, creating, updating, and deleting dishes in the database.
+- Enforcement of scope exclusions (2FA, API tokens, and teams disabled).
 
 ---
 

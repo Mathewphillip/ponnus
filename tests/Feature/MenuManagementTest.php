@@ -156,6 +156,24 @@ class MenuManagementTest extends TestCase
     }
 
     /**
+     * Test: Authenticated user can view single menu item detail page.
+     */
+    public function test_authenticated_user_can_view_single_menu_item(): void
+    {
+        $user = User::first();
+        $menu = Menu::where('name', 'Chicken Pilau')->first();
+
+        $response = $this->actingAs($user)->get(route('menu.show', $menu->id));
+
+        $response->assertStatus(200);
+        $response->assertViewIs('dashboard.show-menu');
+        $response->assertSee('Chicken Pilau');
+        $response->assertSee('Main Course');
+        $response->assertSee('12.50');
+        $response->assertSee('Available');
+    }
+
+    /**
      * Test: Authenticated user can view add-menu form.
      */
     public function test_authenticated_user_can_view_add_menu_form(): void
