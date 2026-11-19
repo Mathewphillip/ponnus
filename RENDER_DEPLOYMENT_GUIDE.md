@@ -39,22 +39,27 @@ This guide provides step-by-step instructions for deploying the **PONNUS Restaur
 
 ---
 
-## 🗄️ Step 1: Set Up an External MySQL Database
+## 🗄️ Step 1: Set Up an External Database
 
-Since Render's free managed database service only supports PostgreSQL, connect an external MySQL-compatible provider.
+Render's free web service connects seamlessly to any cloud database.
 
-### Recommended Free Option: TiDB Cloud Serverless (MySQL 8.0 Compatible)
-1. Go to [TiDB Cloud](https://tidbcloud.com) and create a free account.
-2. Click **Create Cluster** &rarr; select **Serverless (Free Tier)**.
-3. Set a root password and note down your connection details:
-   - **Host**: e.g., `gateway01.us-west-2.prod.aws.tidbcloud.com`
-   - **Port**: `4000` (or `3306`)
-   - **Database**: `test` or `ponnus`
-   - **User**: e.g., `xxxxxx.root`
-   - **Password**: `<your-password>`
-   - **SSL**: Supported out-of-the-box.
+### Recommended Provider: Neon Serverless PostgreSQL (Free Tier)
+If you are using [Neon](https://neon.tech):
+From your Neon connection string:
+```text
+postgresql://ponnusdb_owner:npg_EvNsI3rTg7Fw@ep-spring-flower-bdyg1rft-pooler.c-8.us-east-2.aws.neon.tech/ponnusdb?sslmode=require
+```
 
-*(Alternatively, you can use [Aiven](https://aiven.io), [Railway](https://railway.com), or any cloud MySQL server).*
+The corresponding Render environment variables are:
+- **`DB_CONNECTION`**: `pgsql`
+- **`DB_HOST`**: `ep-spring-flower-bdyg1rft-pooler.c-8.us-east-2.aws.neon.tech`
+- **`DB_PORT`**: `5432`
+- **`DB_DATABASE`**: `ponnusdb`
+- **`DB_USERNAME`**: `ponnusdb_owner`
+- **`DB_PASSWORD`**: `npg_EvNsI3rTg7Fw`
+- **`DB_SSLMODE`**: `require`
+
+*(Alternatively, you can also use TiDB Cloud, Aiven, or Railway if you prefer MySQL).*
 
 ---
 

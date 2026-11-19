@@ -58,12 +58,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libicu-dev \
     libonig-dev \
     libxml2-dev \
+    libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Configure & install required PHP extensions for Laravel 12 + Jetstream + MySQL
+# Configure & install required PHP extensions for Laravel 12 + Jetstream + MySQL + PostgreSQL
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) \
         pdo_mysql \
+        pdo_pgsql \
         bcmath \
         gd \
         intl \

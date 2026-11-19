@@ -33,29 +33,25 @@ php artisan route:cache
 php artisan view:cache
 
 # 5. Database Connection Check & Safe Migrations
-if [ -n "$DB_HOST" ] && [ "$DB_CONNECTION" = "mysql" ]; then
-    echo "==> [Ponnus Startup] Waiting for external MySQL database at ${DB_HOST}:${DB_PORT:-3306}..."
+if [ -n "$DB_HOST" ] || [ -n "$DB_URL" ] || [ -n "$DATABASE_URL" ]; then
+    echo "==> [Ponnus Startup] Checking database connection (${DB_CONNECTION:-mysql})..."
     MAX_TRIES=15
     COUNT=0
     until php -r '
+        require __DIR__ . "/vendor/autoload.php";
+        $app = require_once __DIR__ . "/bootstrap/app.php";
+        $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+        $kernel->bootstrap();
         try {
-            $options = [];
-            if ($ca = getenv("MYSQL_ATTR_SSL_CA")) {
-                $options[Pdo\Mysql::ATTR_SSL_CA] = $ca;
-            }
-            $pdo = new PDO(
-                "mysql:host=" . getenv("DB_HOST") . ";port=" . (getenv("DB_PORT") ?: 3306) . ";dbname=" . getenv("DB_DATABASE"),
-                getenv("DB_USERNAME"),
-                getenv("DB_PASSWORD"),
-                $options
-            );
+            Illuminate\Support\Facades\DB::connection()->getPdo();
             exit(0);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
+            fwrite(STDERR, $e->getMessage() . PHP_EOL);
             exit(1);
         }
     ' 2>/dev/null || [ $COUNT -ge $MAX_TRIES ]; do
         COUNT=$((COUNT + 1))
-        echo "    Waiting for MySQL ($COUNT/$MAX_TRIES)..."
+        echo "    Waiting for database ($COUNT/$MAX_TRIES)..."
         sleep 2
     done
 
@@ -74,7 +70,7 @@ if [ -n "$DB_HOST" ] && [ "$DB_CONNECTION" = "mysql" ]; then
         echo "    Check DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD in Render dashboard."
     fi
 else
-    echo "==> [Ponnus Startup] DB_HOST not provided or not mysql; skipping database migration step."
+    echo "==> [Ponnus Startup] No DB_HOST or DB_URL provided; skipping database migration step."
 fi
 
 echo "==> [Ponnus Startup] Startup sequence complete! Launching web server..."
