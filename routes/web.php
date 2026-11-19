@@ -20,6 +20,15 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+// Health check endpoint for Render / cloud container orchestrators
+Route::get('/healthz', function () {
+    return response()->json([
+        'status' => 'ok',
+        'application' => 'Ponnus Restaurant Menu System',
+        'timestamp' => now()->toISOString(),
+    ]);
+})->name('healthz');
+
 // Public customer-facing menu (no authentication required)
 Route::get('/menu', [MenuController::class, 'publicMenu'])->name('public.menu');
 

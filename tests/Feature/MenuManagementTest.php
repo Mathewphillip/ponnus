@@ -299,4 +299,19 @@ class MenuManagementTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Main Course');
     }
+
+    /**
+     * Test: Health check endpoints return 200 OK for Render.
+     */
+    public function test_health_check_endpoints_return_ok(): void
+    {
+        // Test built-in Laravel /up endpoint
+        $upResponse = $this->get('/up');
+        $upResponse->assertStatus(200);
+
+        // Test dedicated /healthz JSON endpoint
+        $healthzResponse = $this->get('/healthz');
+        $healthzResponse->assertStatus(200);
+        $healthzResponse->assertJson(['status' => 'ok']);
+    }
 }
