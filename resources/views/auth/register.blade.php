@@ -122,12 +122,18 @@
                             <i class="bi bi-lock"></i>
                         </span>
                         <input type="password" 
-                               class="form-control border-start-0 ps-0 @error('password') is-invalid @enderror" 
+                               class="form-control border-start-0 border-end-0 ps-0 @error('password') is-invalid @enderror" 
                                id="password" 
                                name="password" 
                                placeholder="At least 8 characters" 
                                required 
                                autocomplete="new-password">
+                        <button class="input-group-text bg-light border-start-0 text-muted"
+                                type="button"
+                                id="togglePassword"
+                                title="Show / hide password">
+                            <i class="bi bi-eye" id="togglePasswordIcon"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -139,12 +145,18 @@
                             <i class="bi bi-shield-lock"></i>
                         </span>
                         <input type="password" 
-                               class="form-control border-start-0 ps-0 @error('password_confirmation') is-invalid @enderror" 
+                               class="form-control border-start-0 border-end-0 ps-0 @error('password_confirmation') is-invalid @enderror" 
                                id="password_confirmation" 
                                name="password_confirmation" 
                                placeholder="Re-enter your password" 
                                required 
                                autocomplete="new-password">
+                        <button class="input-group-text bg-light border-start-0 text-muted"
+                                type="button"
+                                id="togglePasswordConfirm"
+                                title="Show / hide password">
+                            <i class="bi bi-eye" id="togglePasswordConfirmIcon"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -174,5 +186,25 @@
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Reusable toggle helper
+        function togglePasswordVisibility(btnId, inputId, iconId) {
+            document.getElementById(btnId).addEventListener('click', function () {
+                const input = document.getElementById(inputId);
+                const icon  = document.getElementById(iconId);
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.replace('bi-eye', 'bi-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.replace('bi-eye-slash', 'bi-eye');
+                }
+            });
+        }
+
+        // Wire up both password fields
+        togglePasswordVisibility('togglePassword',        'password',              'togglePasswordIcon');
+        togglePasswordVisibility('togglePasswordConfirm', 'password_confirmation', 'togglePasswordConfirmIcon');
+    </script>
 </body>
 </html>

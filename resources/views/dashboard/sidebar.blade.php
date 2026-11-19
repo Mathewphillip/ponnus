@@ -45,7 +45,7 @@
 
         <!-- Public Menu Link -->
         <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('public.menu') ? 'active' : '' }}" href="{{ route('public.menu') }}" target="_blank">
+            <a class="nav-link {{ request()->routeIs('public.menu') ? 'active' : '' }}" href="{{ route('public.menu') }}">
                 <i class="bi bi-shop"></i>
                 <span>Customer Menu</span>
             </a>

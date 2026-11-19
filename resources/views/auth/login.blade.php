@@ -112,12 +112,18 @@
                             <i class="bi bi-lock"></i>
                         </span>
                         <input type="password" 
-                               class="form-control border-start-0 ps-0 @error('password') is-invalid @enderror" 
+                               class="form-control border-start-0 border-end-0 ps-0 @error('password') is-invalid @enderror" 
                                id="password" 
                                name="password" 
                                placeholder="••••••••" 
                                required 
                                autocomplete="current-password">
+                        <button class="input-group-text bg-light border-start-0 text-muted" 
+                                type="button" 
+                                id="togglePassword" 
+                                title="Show / hide password">
+                            <i class="bi bi-eye" id="togglePasswordIcon"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -168,5 +174,19 @@
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Password visibility toggle — Login
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const input = document.getElementById('password');
+            const icon  = document.getElementById('togglePasswordIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('bi-eye', 'bi-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('bi-eye-slash', 'bi-eye');
+            }
+        });
+    </script>
 </body>
 </html>
