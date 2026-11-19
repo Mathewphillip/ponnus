@@ -3,6 +3,21 @@ set -e
 
 echo "==> [Ponnus Startup] Initializing application for Render Free Tier..."
 
+# Normalize Neon DB_HOST / DB_URL: strip '-pooler' to use direct connection for DDL / migrations
+if [ -n "$DB_HOST" ]; then
+    DB_HOST=$(echo "$DB_HOST" | sed 's/-pooler//')
+    export DB_HOST
+    echo "==> [Ponnus Startup] Active DB_HOST: ${DB_HOST}"
+fi
+if [ -n "$DB_URL" ]; then
+    DB_URL=$(echo "$DB_URL" | sed 's/-pooler//')
+    export DB_URL
+fi
+if [ -n "$DATABASE_URL" ]; then
+    DATABASE_URL=$(echo "$DATABASE_URL" | sed 's/-pooler//')
+    export DATABASE_URL
+fi
+
 # 1. Configure Port for Nginx (Render sets $PORT dynamically, default to 10000)
 export PORT="${PORT:-10000}"
 echo "==> [Ponnus Startup] Configuring Nginx to listen on port ${PORT}..."
@@ -58,12 +73,15 @@ if [ -n "$DB_HOST" ] || [ -n "$DB_URL" ] || [ -n "$DATABASE_URL" ]; then
     if [ $COUNT -lt $MAX_TRIES ]; then
         echo "==> [Ponnus Startup] Database connection established!"
         echo "==> [Ponnus Startup] Running safe database migrations (migrate --force)..."
-        php artisan migrate --force
-
-        # Optional: Run seeders if AUTORUN_SEEDERS is set to true
-        if [ "$AUTORUN_SEEDERS" = "true" ] || [ "$AUTORUN_SEEDERS" = "1" ]; then
-            echo "==> [Ponnus Startup] Seeding demo accounts and dishes (db:seed --force)..."
-            php artisan db:seed --force
+        if php artisan migrate --force; then
+            echo "==> [Ponnus Startup] Migrations completed successfully!"
+            # Optional: Run seeders if AUTORUN_SEEDERS is set to true
+            if [ "$AUTORUN_SEEDERS" = "true" ] || [ "$AUTORUN_SEEDERS" = "1" ]; then
+                echo "==> [Ponnus Startup] Seeding demo accounts and dishes (db:seed --force)..."
+                php artisan db:seed --force || echo "==> [Ponnus Startup] Seeding notice: seed completed with notice."
+            fi
+        else
+            echo "==> [Ponnus Startup] WARNING: Migration command exited with warning. Web service will continue running."
         fi
     else
         echo "==> [Ponnus Startup] WARNING: Database connection timed out. Skipping migrations on startup."

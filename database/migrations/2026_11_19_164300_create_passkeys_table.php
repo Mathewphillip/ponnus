@@ -7,6 +7,8 @@ use Laravel\Passkeys\Passkeys;
 
 return new class extends Migration
 {
+    public $withinTransaction = false;
+
     /**
      * Run the migrations.
      */
