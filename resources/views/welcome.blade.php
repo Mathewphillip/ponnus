@@ -107,8 +107,8 @@
                             <small class="text-muted">Staff Access Portal</small>
                         </div>
                         <div class="card-body p-4">
-                            <div class="small text-muted mb-3 fw-semibold text-uppercase" style="letter-spacing: 0.5px;">
-                                Demonstration Accounts (Password: <code>password123</code>)
+                            <div class="small text-muted mb-3 fw-semibold">
+                                Demonstration Accounts (password: <code class="text-lowercase" style="text-transform: none;">password123</code>)
                             </div>
                             <div class="list-group list-group-flush mb-3">
                                 <div class="list-group-item px-0 py-2 d-flex justify-content-between align-items-center">

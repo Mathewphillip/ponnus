@@ -152,7 +152,7 @@
 
         <!-- Demonstration Credentials Reference -->
         <div class="text-center mt-4">
-            <small class="text-muted d-block mb-1">Demo Accounts (Password: <code>password123</code>)</small>
+            <small class="text-muted d-block mb-1">Demo Accounts (password: <code class="text-lowercase" style="text-transform: none;">password123</code>)</small>
             <div class="d-flex flex-wrap justify-content-center gap-2">
                 <span class="badge bg-light text-muted border">admin@ponnus.test</span>
                 <span class="badge bg-light text-muted border">staff@ponnus.test</span>
