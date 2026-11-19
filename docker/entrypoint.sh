@@ -41,6 +41,20 @@ if [ ! -L /var/www/html/public/storage ]; then
     php artisan storage:link || true
 fi
 
+# Ensure valid APP_KEY exists
+if [ -z "$APP_KEY" ] || ! php -r '
+    $k = getenv("APP_KEY");
+    if (str_starts_with($k, "base64:")) { $k = base64_decode(substr($k, 7)); }
+    exit(strlen($k) === 32 ? 0 : 1);
+' 2>/dev/null; then
+    echo "==> [Ponnus Startup] APP_KEY is missing or invalid. Auto-generating production key..."
+    export APP_KEY=$(php artisan key:generate --show)
+    echo "==> [Ponnus Startup] Generated APP_KEY: ${APP_KEY}"
+fi
+
+export LOG_CHANNEL="${LOG_CHANNEL:-stderr}"
+export AUTORUN_SEEDERS="${AUTORUN_SEEDERS:-true}"
+
 # 4. Optimize Laravel for Production
 echo "==> [Ponnus Startup] Caching configuration, routes, and views..."
 php artisan config:cache
