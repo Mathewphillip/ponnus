@@ -16,7 +16,7 @@
             <h3 class="fw-bold text-dark mb-0">Restaurant Menu Items</h3>
         </div>
         <div>
-            <a href="{{ route('menu.index') }}" class="btn btn-warning fw-semibold shadow-sm">
+            <a href="{{ route('menu.index') }}" class="btn btn-brand shadow-sm">
                 <i class="bi bi-plus-circle me-1"></i> Add New Menu Item
             </a>
         </div>
@@ -25,10 +25,10 @@
     <!-- Menu Items Table Card -->
     <div class="card border-0 shadow-sm rounded-4 bg-white">
         <div class="card-header bg-white border-bottom py-3 d-flex justify-content-between align-items-center">
-            <h5 class="fw-bold mb-0 text-dark">
-                <i class="bi bi-card-checklist text-primary me-2"></i> All Menu Records
+            <h5 class="fw-bold mb-0 text-dark small text-uppercase" style="letter-spacing: 0.5px;">
+                <i class="bi bi-card-checklist text-primary me-2"></i> Menu Items
             </h5>
-            <span class="badge bg-light text-dark border">Total Items: {{ count($menus) }}</span>
+            <span class="badge bg-light text-muted border small">Total Items: {{ count($menus) }}</span>
         </div>
 
         <div class="card-body p-0">

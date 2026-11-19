@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 
-@section('title', $menu->name . ' - Menu Item Details')
+@section('title', $menu->name . ' - Ponnus')
 
 @section('content')
 <div class="container-fluid p-0">
@@ -8,7 +8,7 @@
     <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
         <div>
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-1">
+                <ol class="breadcrumb mb-1 small">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-decoration-none">Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('menu.create') }}" class="text-decoration-none">Menu Items</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $menu->name }}</li>
@@ -17,14 +17,14 @@
             <h3 class="fw-bold text-dark mb-0">Menu Item Details</h3>
         </div>
         <div class="d-flex gap-2">
-            <a href="{{ route('menu.create') }}" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i> Back to Menu List
+            <a href="{{ route('menu.create') }}" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left me-1"></i> Back to Menu
             </a>
-            <a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-primary">
+            <a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-brand btn-sm">
                 <i class="bi bi-pencil-square me-1"></i> Edit Item
             </a>
             <button type="button" 
-                    class="btn btn-outline-danger btn-delete" 
+                    class="btn btn-outline-danger btn-sm btn-delete" 
                     data-name="{{ $menu->name }}" 
                     data-url="{{ route('menu.destroy', $menu->id) }}">
                 <i class="bi bi-trash me-1"></i> Delete
@@ -39,7 +39,7 @@
                 <div class="card-body p-4 p-md-5">
                     <!-- Category & Availability Header -->
                     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
-                        <span class="badge bg-warning text-dark px-3 py-2 fs-6 fw-semibold">
+                        <span class="badge px-3 py-2 fs-6 fw-semibold" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa;">
                             <i class="bi bi-tag-fill me-1"></i> {{ $menu->category }}
                         </span>
 
@@ -63,8 +63,8 @@
                     <hr class="my-4 text-muted opacity-25">
 
                     <!-- Description Section -->
-                    <h5 class="fw-bold text-dark mb-2">Description</h5>
-                    <p class="text-secondary lead fs-6 lh-lg mb-4">
+                    <h6 class="fw-bold text-dark text-uppercase small mb-2" style="letter-spacing: 0.5px;">Description</h6>
+                    <p class="text-secondary lh-lg mb-4">
                         {{ $menu->description ?? 'No extended description has been added for this menu item yet.' }}
                     </p>
 
@@ -86,13 +86,13 @@
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="p-3 bg-light rounded-3 text-center">
-                                <span class="text-muted small d-block mb-1">Unit Price</span>
+                                <span class="text-muted small d-block mb-1">Price</span>
                                 <span class="fw-bold text-success fs-5">${{ number_format($menu->price, 2) }}</span>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="p-3 bg-light rounded-3 text-center">
-                                <span class="text-muted small d-block mb-1">Status</span>
+                                <span class="text-muted small d-block mb-1">Availability</span>
                                 <span class="fw-bold {{ $menu->availability === 'Available' ? 'text-success' : 'text-secondary' }} fs-6">
                                     {{ $menu->availability }}
                                 </span>
@@ -114,41 +114,25 @@
             </div>
         </div>
 
-        <!-- Educational Sidebar Panel -->
+        <!-- Kitchen Overview Panel -->
         <div class="col-lg-4">
-            <div class="card border-0 shadow-sm rounded-4 bg-light mb-4">
-                <div class="card-body p-4">
-                    <h6 class="fw-bold text-dark mb-3">
-                        <i class="bi bi-lightbulb text-warning me-2"></i> Eloquent "Read Single Item" Pattern
-                    </h6>
-                    <ul class="list-unstyled small text-muted mb-0">
-                        <li class="mb-3">
-                            <strong>1. Route Parameter Binding:</strong> The URL <code>/menu/show/{{ $menu->id }}</code> passes the ID parameter into <code>MenuController@show($id)</code>.
-                        </li>
-                        <li class="mb-3">
-                            <strong>2. Model Query:</strong> The controller executes:
-                            <pre class="bg-white p-2 rounded border mt-1 mb-0 text-dark font-monospace" style="font-size: 0.75rem;">$menu = Menu::findOrFail($id);</pre>
-                            This executes <code>SELECT * FROM menus WHERE id = ? LIMIT 1</code>. If not found, a 404 HTTP response is thrown automatically.
-                        </li>
-                        <li class="mb-0">
-                            <strong>3. Blade View Data:</strong> The single model instance is injected using <code>compact('menu')</code>, allowing clean attribute access like <code>$menu->name</code> and <code>$menu->price</code>.
-                        </li>
-                    </ul>
+            <div class="card border-0 shadow-sm rounded-4 bg-white p-4 mb-4">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <img src="{{ asset('chef.jpg') }}" alt="Ponnus Chef" class="rounded-circle shadow-sm" style="width: 55px; height: 55px; object-fit: cover;">
+                    <div>
+                        <h6 class="fw-bold text-dark mb-0">Ponnus Kitchen</h6>
+                        <small class="text-muted">Item Quick Actions</small>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Quick Action Card -->
-            <div class="card border-0 shadow-sm rounded-4 bg-white p-4">
-                <h6 class="fw-bold text-dark mb-3">Quick Actions</h6>
                 <div class="d-grid gap-2">
-                    <a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-outline-primary btn-sm text-start">
+                    <a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-brand btn-sm">
                         <i class="bi bi-pencil-square me-2"></i> Edit Dish Details
                     </a>
-                    <a href="{{ route('menu.index') }}" class="btn btn-outline-success btn-sm text-start">
-                        <i class="bi bi-plus-circle me-2"></i> Add Another Menu Item
+                    <a href="{{ route('menu.index') }}" class="btn btn-outline-secondary btn-sm">
+                        <i class="bi bi-plus-circle me-2"></i> Add Another Item
                     </a>
-                    <a href="{{ route('menu.create') }}" class="btn btn-outline-secondary btn-sm text-start">
-                        <i class="bi bi-card-checklist me-2"></i> Return to Table View
+                    <a href="{{ route('menu.create') }}" class="btn btn-outline-secondary btn-sm">
+                        <i class="bi bi-card-checklist me-2"></i> Return to Menu List
                     </a>
                 </div>
             </div>
@@ -171,7 +155,7 @@
                 <div class="alert alert-warning mt-3 mb-0">
                     <strong>Dish Name:</strong> <span id="deleteItemName" class="fw-bold"></span>
                 </div>
-                <small class="text-muted mt-2 d-block">This action will remove the record from the MySQL database.</small>
+                <small class="text-muted mt-2 d-block">This action will remove the record from the database.</small>
             </div>
             <div class="modal-footer bg-light">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

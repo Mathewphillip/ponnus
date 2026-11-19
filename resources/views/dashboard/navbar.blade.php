@@ -1,14 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm px-3">
+<nav class="navbar navbar-expand-lg navbar-light-custom sticky-top px-3 py-2">
     <div class="container-fluid">
-        <!-- Brand Link -->
-        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="{{ route('dashboard') }}">
-            <i class="bi bi-egg-fried text-warning fs-4"></i>
-            <span class="text-white">PONNUS</span>
-            <span class="badge bg-warning text-dark fs-6 ms-1">Restaurant</span>
+        <!-- Brand Link with Chef Logo -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('dashboard') }}">
+            <img src="{{ asset('chef.jpg') }}" alt="Ponnus Chef" class="rounded-circle shadow-sm" style="width: 38px; height: 38px; object-fit: cover;">
+            <span class="fw-bold fs-5 text-dark" style="letter-spacing: -0.3px;">PONNUS</span>
+            <span class="badge bg-light text-muted border small ms-1">Restaurant</span>
         </a>
 
         <!-- Mobile Toggler -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -16,45 +16,44 @@
         <div class="d-none d-lg-flex ms-auto align-items-center gap-3">
             @if (Auth::check())
                 <!-- User Information -->
-                <div class="text-end text-light">
-                    <div class="fw-semibold">{{ Auth::user()->name }}</div>
-                    <small class="badge bg-secondary badge-role">
-                        Role: {{ Auth::user()->role ?? 'Staff' }}
-                    </small>
+                <div class="text-end">
+                    <div class="fw-semibold text-dark small">{{ Auth::user()->name }}</div>
+                    <span class="badge bg-orange-subtle text-warning-emphasis border border-warning-subtle badge-role" style="background-color: #fff7ed; color: #ea580c;">
+                        {{ Auth::user()->role ?? 'Staff' }}
+                    </span>
                 </div>
 
-                <!-- Jetstream Profile Dropdown -->
+                <!-- Profile Dropdown -->
                 <div class="dropdown">
-                    <button class="btn btn-outline-light dropdown-toggle d-flex align-items-center gap-2" type="button" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle fs-5"></i>
+                    <button class="btn btn-light border rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;" type="button" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person text-secondary fs-5"></i>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userMenuButton">
-                        <li class="dropdown-header">
-                            <strong>{{ Auth::user()->name }}</strong><br>
-                            <span class="text-muted small">{{ Auth::user()->email }}</span>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 py-2" aria-labelledby="userMenuButton" style="border-radius: 0.75rem;">
+                        <li class="px-3 py-2 border-bottom mb-1">
+                            <div class="fw-bold text-dark small">{{ Auth::user()->name }}</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">{{ Auth::user()->email }}</div>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('profile.show') }}">
-                                <i class="bi bi-gear"></i> Jetstream Profile
+                            <a class="dropdown-item py-2 d-flex align-items-center gap-2 small" href="{{ route('dashboard') }}">
+                                <i class="bi bi-speedometer2 text-muted"></i> Dashboard
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('dashboard') }}">
-                                <i class="bi bi-speedometer2"></i> Dashboard
+                            <a class="dropdown-item py-2 d-flex align-items-center gap-2 small" href="{{ route('menu.create') }}">
+                                <i class="bi bi-card-checklist text-muted"></i> Menu Items
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('menu.create') }}">
-                                <i class="bi bi-menu-button-wide"></i> Menu Items
+                            <a class="dropdown-item py-2 d-flex align-items-center gap-2 small" href="{{ route('profile.show') }}">
+                                <i class="bi bi-gear text-muted"></i> Account Settings
                             </a>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li><hr class="dropdown-divider my-1"></li>
                         <li>
-                            <!-- Standard Jetstream POST Logout -->
+                            <!-- Jetstream POST Logout -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="dropdown-item text-danger d-flex align-items-center gap-2">
+                                <button type="submit" class="dropdown-item py-2 text-danger d-flex align-items-center gap-2 small">
                                     <i class="bi bi-box-arrow-right"></i> Log Out
                                 </button>
                             </form>
