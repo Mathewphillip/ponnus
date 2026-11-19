@@ -50,7 +50,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Category</th>
                                 <th scope="col" style="max-width: 300px;">Description</th>
-                                <th scope="col">Price ($)</th>
+                                <th scope="col">Price (UGX)</th>
                                 <th scope="col">Availability</th>
                                 <th scope="col">Created Date</th>
                                 <th scope="col" class="text-end pe-4" style="width: 150px;">Actions</th>
@@ -72,7 +72,7 @@
                                         {{ $item->description ?? 'No description provided' }}
                                     </td>
                                     <td class="fw-bold text-dark">
-                                        ${{ number_format($item->price, 2) }}
+                                        UGX {{ number_format($item->price, 0) }}
                                     </td>
                                     <td>
                                         @if ($item->availability === 'Available')

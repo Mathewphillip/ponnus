@@ -57,7 +57,7 @@
                     <!-- Dish Title & Price -->
                     <div class="d-flex flex-wrap justify-content-between align-items-baseline gap-2 mb-4">
                         <h2 class="display-6 fw-bold text-dark mb-0">{{ $menu->name }}</h2>
-                        <span class="display-6 fw-bold text-success">${{ number_format($menu->price, 2) }}</span>
+                        <span class="display-6 fw-bold text-success">UGX {{ number_format($menu->price, 0) }}</span>
                     </div>
 
                     <hr class="my-4 text-muted opacity-25">
@@ -87,7 +87,7 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="p-3 bg-light rounded-3 text-center">
                                 <span class="text-muted small d-block mb-1">Price</span>
-                                <span class="fw-bold text-success fs-5">${{ number_format($menu->price, 2) }}</span>
+                                <span class="fw-bold text-success fs-5">UGX {{ number_format($menu->price, 0) }}</span>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">

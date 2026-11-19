@@ -169,7 +169,8 @@ class MenuManagementTest extends TestCase
         $response->assertViewIs('dashboard.show-menu');
         $response->assertSee('Chicken Pilau');
         $response->assertSee('Main Course');
-        $response->assertSee('12.50');
+        $response->assertSee('UGX');
+        $response->assertSee('15,000');
         $response->assertSee('Available');
     }
 
@@ -197,7 +198,7 @@ class MenuManagementTest extends TestCase
         $itemData = [
             'name'         => 'Fish Curry',
             'category'     => 'Main Course',
-            'price'        => 13.50,
+            'price'        => 20000,
             'availability' => 'Available',
             'description'  => 'Traditional coconut fish curry with aromatic spices.',
         ];
@@ -208,7 +209,7 @@ class MenuManagementTest extends TestCase
         $this->assertDatabaseHas('menus', [
             'name'     => 'Fish Curry',
             'category' => 'Main Course',
-            'price'    => 13.50,
+            'price'    => 20000,
         ]);
     }
 
@@ -223,7 +224,7 @@ class MenuManagementTest extends TestCase
         $updatedData = [
             'name'         => 'Special Chicken Pilau',
             'category'     => 'Main Course',
-            'price'        => 15.00,
+            'price'        => 22000,
             'availability' => 'Unavailable',
             'description'  => 'Deluxe portion with extra spiced boiled egg.',
         ];
@@ -234,7 +235,7 @@ class MenuManagementTest extends TestCase
         $this->assertDatabaseHas('menus', [
             'id'           => $menu->id,
             'name'         => 'Special Chicken Pilau',
-            'price'        => 15.00,
+            'price'        => 22000,
             'availability' => 'Unavailable',
         ]);
     }

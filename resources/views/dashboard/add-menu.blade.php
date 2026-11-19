@@ -77,18 +77,18 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="price" class="form-label fw-semibold text-dark small">
-                                    Price ($ USD) <span class="text-danger">*</span>
+                                    Price (UGX) <span class="text-danger">*</span>
                                 </label>
                                 <div class="input-group">
-                                    <span class="input-group-text bg-light text-muted">$</span>
+                                    <span class="input-group-text bg-light text-muted">UGX</span>
                                     <input type="number" 
-                                           step="0.01" 
+                                           step="100" 
                                            min="0" 
                                            class="form-control @error('price') is-invalid @enderror" 
                                            id="price" 
                                            name="price" 
                                            value="{{ old('price') }}" 
-                                           placeholder="0.00" 
+                                           placeholder="e.g. 15000" 
                                            required>
                                     @error('price')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -159,7 +159,7 @@
                         <strong>Naming:</strong> Use clear, appetizing names familiar to diners.
                     </li>
                     <li class="mb-2 pb-2 border-bottom">
-                        <strong>Pricing:</strong> Input decimal amounts (e.g., <code>12.50</code>).
+                        <strong>Pricing:</strong> Input amounts in UGX (e.g., <code>15000</code>).
                     </li>
                     <li class="mb-0">
                         <strong>Availability:</strong> Toggle to <em>Unavailable</em> immediately when ingredients run low.

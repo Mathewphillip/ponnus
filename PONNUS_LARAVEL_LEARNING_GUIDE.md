@@ -459,7 +459,7 @@ public function create()
                 <td><strong>{{ $item->name }}</strong></td>
                 <td><span class="badge bg-info">{{ $item->category }}</span></td>
                 <td>{{ $item->description }}</td>
-                <td>${{ number_format($item->price, 2) }}</td>
+                <td>UGX {{ number_format($item->price, 0) }}</td>
                 <td>
                     @if ($item->availability === 'Available')
                         <span class="badge bg-success">Available</span>
@@ -793,35 +793,35 @@ class MenuSeeder extends Seeder
                 'name'         => 'Chicken Pilau',
                 'description'  => 'Fragrant spiced basmati rice cooked with tender pieces of marinated chicken and authentic spices.',
                 'category'     => 'Main Course',
-                'price'        => 12.50,
+                'price'        => 15000,
                 'availability' => 'Available',
             ],
             [
                 'name'         => 'Beef Burger',
                 'description'  => 'Juicy flame-grilled beef patty served in a brioche bun with cheddar, lettuce, and tomatoes.',
                 'category'     => 'Fast Food',
-                'price'        => 8.99,
+                'price'        => 18000,
                 'availability' => 'Available',
             ],
             [
                 'name'         => 'Vegetable Pizza',
                 'description'  => 'Crispy artisan pizza topped with tomato sauce, mozzarella, bell peppers, olives, and mushrooms.',
                 'category'     => 'Pizza',
-                'price'        => 10.50,
+                'price'        => 25000,
                 'availability' => 'Available',
             ],
             [
                 'name'         => 'Fresh Juice',
                 'description'  => 'Freshly extracted chilled seasonal passion fruit and orange juice with mint.',
                 'category'     => 'Beverages',
-                'price'        => 4.00,
+                'price'        => 5000,
                 'availability' => 'Available',
             ],
             [
                 'name'         => 'Grilled Chicken',
                 'description'  => 'Half chicken marinated in garlic and lemon, char-grilled to tenderness.',
                 'category'     => 'Main Course',
-                'price'        => 14.00,
+                'price'        => 28000,
                 'availability' => 'Unavailable',
             ],
         ];

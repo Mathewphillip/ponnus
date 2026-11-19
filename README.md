@@ -133,11 +133,11 @@ The database seeder automatically populates three demonstration accounts with di
 
 The `MenuSeeder` seeds five initial restaurant items across various food categories:
 
-1. **Chicken Pilau** – *Main Course* – `$12.50` – `Available`
-2. **Beef Burger** – *Fast Food* – `$8.99` – `Available`
-3. **Vegetable Pizza** – *Pizza* – `$10.50` – `Available`
-4. **Fresh Juice** – *Beverages* – `$4.00` – `Available`
-5. **Grilled Chicken** – *Main Course* – `$14.00` – `Unavailable`
+1. **Chicken Pilau** – *Main Course* – `UGX 15,000` – `Available`
+2. **Beef Burger** – *Fast Food* – `UGX 18,000` – `Available`
+3. **Vegetable Pizza** – *Pizza* – `UGX 25,000` – `Available`
+4. **Fresh Juice** – *Beverages* – `UGX 5,000` – `Available`
+5. **Grilled Chicken** – *Main Course* – `UGX 28,000` – `Unavailable`
 
 ---
 
