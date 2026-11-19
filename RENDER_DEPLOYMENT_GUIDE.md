@@ -44,15 +44,13 @@ This guide provides step-by-step instructions for deploying the **PONNUS Restaur
 Render's free web service connects seamlessly to any cloud database.
 
 ### Recommended Provider: Neon Serverless PostgreSQL (Free Tier)
-If you are using [Neon](https://neon.tech):
 From your Neon connection string:
-```text
-postgresql://ponnusdb_owner:npg_EvNsI3rTg7Fw@ep-spring-flower-bdyg1rft-pooler.c-8.us-east-2.aws.neon.tech/ponnusdb?sslmode=require
-```
+- **Direct Host (Recommended for DDL / Migrations)**: `ep-spring-flower-bdyg1rft.c-8.us-east-2.aws.neon.tech`
+- **Pooled Host**: `ep-spring-flower-bdyg1rft-pooler.c-8.us-east-2.aws.neon.tech`
 
-The corresponding Render environment variables are:
+The corresponding Render environment variables:
 - **`DB_CONNECTION`**: `pgsql`
-- **`DB_HOST`**: `ep-spring-flower-bdyg1rft-pooler.c-8.us-east-2.aws.neon.tech`
+- **`DB_HOST`**: `ep-spring-flower-bdyg1rft.c-8.us-east-2.aws.neon.tech` *(or with `-pooler`)*
 - **`DB_PORT`**: `5432`
 - **`DB_DATABASE`**: `ponnusdb`
 - **`DB_USERNAME`**: `ponnusdb_owner`

@@ -58,7 +58,7 @@ if [ -n "$DB_HOST" ] || [ -n "$DB_URL" ] || [ -n "$DATABASE_URL" ]; then
     if [ $COUNT -lt $MAX_TRIES ]; then
         echo "==> [Ponnus Startup] Database connection established!"
         echo "==> [Ponnus Startup] Running safe database migrations (migrate --force)..."
-        php artisan migrate --force --isolated || php artisan migrate --force
+        php artisan migrate --force
 
         # Optional: Run seeders if AUTORUN_SEEDERS is set to true
         if [ "$AUTORUN_SEEDERS" = "true" ] || [ "$AUTORUN_SEEDERS" = "1" ]; then
