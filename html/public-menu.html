@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Menu — Ponnus Restaurant</title>
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-    <!-- ── Navbar ── -->
-    <nav class="public-nav">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a href="index.html" class="text-decoration-none d-flex align-items-center gap-2">
-                <img src="../public/chef.jpg" alt="Ponnus Chef"
-                     class="rounded-circle shadow-sm" style="width:36px;height:36px;object-fit:cover;">
-                <span class="fw-bold fs-5 text-dark" style="letter-spacing:-0.3px;">PONNUS</span>
+    <!-- Navbar -->
+    <nav class="navbar navbar-light bg-white border-bottom py-2 px-0">
+        <div class="container">
+            <a href="index.html" class="navbar-brand d-flex align-items-center gap-2 text-decoration-none">
+                <img src="chef.jpg" alt="Ponnus Chef" class="navbar-brand-img rounded-circle shadow-sm">
+                <span class="fw-bold fs-5 text-dark" style="letter-spacing: -0.3px;">PONNUS</span>
                 <span class="badge bg-light text-muted border small ms-1">Restaurant</span>
             </a>
             <div class="d-flex align-items-center gap-2">
@@ -30,118 +30,201 @@
         </div>
     </nav>
 
-    <!-- ── Hero ── -->
+    <!-- Hero -->
     <div class="hero-section">
-        <div class="container">
+        <div class="container text-center">
             <span class="badge px-3 py-2 rounded-pill mb-3 fw-semibold d-inline-flex align-items-center gap-1"
-                  style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa;">
+                  style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa;">
                 <i class="bi bi-egg-fried"></i> Today's Menu
             </span>
-            <h1 class="fw-bold mb-2 text-dark" style="font-size:2rem;">What We're Serving</h1>
-            <p class="text-secondary mb-0" style="max-width:480px;margin:0 auto;">
-                Fresh, locally sourced dishes prepared daily by our kitchen team.
-                All prices in Ugandan Shillings.
+            <h1 class="fw-bold mb-2 text-dark" style="font-size: 2rem;">What We're Serving</h1>
+            <p class="text-secondary mb-0" style="max-width: 480px; margin: 0 auto;">
+                Fresh, locally sourced dishes prepared daily by our kitchen team. All prices in Ugandan Shillings.
             </p>
         </div>
     </div>
 
-    <!-- ── Main ── -->
+    <!-- Main Content -->
     <main class="py-4">
         <div class="container">
 
-            <!-- Category filter pills -->
-            <div class="d-flex flex-wrap gap-2 mb-4 justify-content-center" id="filterRow">
-                <span class="filter-pill active" data-cat="All" onclick="filterCategory('All')">All Dishes</span>
-                <span class="filter-pill" data-cat="Main Course" onclick="filterCategory('Main Course')">Main Course</span>
-                <span class="filter-pill" data-cat="Fast Food" onclick="filterCategory('Fast Food')">Fast Food</span>
-                <span class="filter-pill" data-cat="Pizza" onclick="filterCategory('Pizza')">Pizza</span>
-                <span class="filter-pill" data-cat="Beverages" onclick="filterCategory('Beverages')">Beverages</span>
+            <!-- Category Filter Pills -->
+            <div class="d-flex flex-wrap gap-2 mb-4 justify-content-center">
+                <button type="button" onclick="filterCategory('All')" class="filter-pill active" id="btn-All">
+                    All Dishes
+                </button>
+                <button type="button" onclick="filterCategory('Beverages')" class="filter-pill" id="btn-Beverages">
+                    Beverages
+                </button>
+                <button type="button" onclick="filterCategory('Fast Food')" class="filter-pill" id="btn-Fast-Food">
+                    Fast Food
+                </button>
+                <button type="button" onclick="filterCategory('Main Course')" class="filter-pill" id="btn-Main-Course">
+                    Main Course
+                </button>
+                <button type="button" onclick="filterCategory('Pizza')" class="filter-pill" id="btn-Pizza">
+                    Pizza
+                </button>
             </div>
 
-            <!-- Results count -->
+            <!-- Results Count -->
             <div class="text-muted small mb-3 text-center">
-                Showing <strong id="dishCount">5</strong> dishes <span id="catLabel"></span>
+                Showing <strong id="dishCount">5</strong> dishes <span id="categoryLabel"></span>
             </div>
 
-            <!-- Menu grid -->
-            <div class="row g-4" id="menuGrid">
-                <!-- Cards injected by JS -->
+            <!-- Menu Grid -->
+            <div class="row g-4" id="dishesGrid">
+                <!-- Item 1: Chicken Pilau -->
+                <div class="col-sm-6 col-lg-4 dish-card" data-category="Main Course">
+                    <div class="menu-card p-4 h-100 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="category-badge" style="background-color: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;">
+                                Main Course
+                            </span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle small">
+                                <i class="bi bi-check-circle me-1"></i>Available
+                            </span>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-2" style="font-size: 1rem;">Chicken Pilau</h5>
+                        <p class="text-secondary mb-3 flex-grow-1" style="font-size: 0.85rem; line-height: 1.55;">
+                            Fragrant spiced basmati rice cooked with tender chicken, tomatoes, and aromatic pilau spices.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top mt-auto">
+                            <span class="price-tag">UGX 15,000</span>
+                            <span class="badge px-3 py-2 rounded-pill fw-semibold" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; font-size: 0.72rem;">
+                                <i class="bi bi-bag-check me-1"></i>Order Now
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Beef Burger -->
+                <div class="col-sm-6 col-lg-4 dish-card" data-category="Fast Food">
+                    <div class="menu-card p-4 h-100 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="category-badge" style="background-color: #fefce8; color: #854d0e; border: 1px solid #fde68a;">
+                                Fast Food
+                            </span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle small">
+                                <i class="bi bi-check-circle me-1"></i>Available
+                            </span>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-2" style="font-size: 1rem;">Beef Burger</h5>
+                        <p class="text-secondary mb-3 flex-grow-1" style="font-size: 0.85rem; line-height: 1.55;">
+                            Juicy flame-grilled beef patty served in a toasted sesame bun with crisp lettuce and tomato.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top mt-auto">
+                            <span class="price-tag">UGX 18,000</span>
+                            <span class="badge px-3 py-2 rounded-pill fw-semibold" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; font-size: 0.72rem;">
+                                <i class="bi bi-bag-check me-1"></i>Order Now
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Vegetable Pizza -->
+                <div class="col-sm-6 col-lg-4 dish-card" data-category="Pizza">
+                    <div class="menu-card p-4 h-100 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="category-badge" style="background-color: #fdf4ff; color: #7e22ce; border: 1px solid #e9d5ff;">
+                                Pizza
+                            </span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle small">
+                                <i class="bi bi-check-circle me-1"></i>Available
+                            </span>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-2" style="font-size: 1rem;">Vegetable Pizza</h5>
+                        <p class="text-secondary mb-3 flex-grow-1" style="font-size: 0.85rem; line-height: 1.55;">
+                            Crispy thin-crust artisan pizza topped with rich tomato sauce, mozzarella, bell peppers, black olives, onions, and mushrooms.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top mt-auto">
+                            <span class="price-tag">UGX 25,000</span>
+                            <span class="badge px-3 py-2 rounded-pill fw-semibold" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; font-size: 0.72rem;">
+                                <i class="bi bi-bag-check me-1"></i>Order Now
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Fresh Juice -->
+                <div class="col-sm-6 col-lg-4 dish-card" data-category="Beverages">
+                    <div class="menu-card p-4 h-100 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="category-badge" style="background-color: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">
+                                Beverages
+                            </span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle small">
+                                <i class="bi bi-check-circle me-1"></i>Available
+                            </span>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-2" style="font-size: 1rem;">Fresh Juice</h5>
+                        <p class="text-secondary mb-3 flex-grow-1" style="font-size: 0.85rem; line-height: 1.55;">
+                            Freshly extracted chilled seasonal passion fruit and orange juice with mint, 100% natural with no artificial preservatives.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top mt-auto">
+                            <span class="price-tag">UGX 5,000</span>
+                            <span class="badge px-3 py-2 rounded-pill fw-semibold" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; font-size: 0.72rem;">
+                                <i class="bi bi-bag-check me-1"></i>Order Now
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Grilled Chicken -->
+                <div class="col-sm-6 col-lg-4 dish-card" data-category="Main Course">
+                    <div class="menu-card p-4 h-100 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="category-badge" style="background-color: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;">
+                                Main Course
+                            </span>
+                            <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle small">
+                                <i class="bi bi-x-circle me-1"></i>Unavailable
+                            </span>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-2" style="font-size: 1rem;">Grilled Chicken</h5>
+                        <p class="text-secondary mb-3 flex-grow-1" style="font-size: 0.85rem; line-height: 1.55;">
+                            Half chicken slow-marinated in garlic, lemon, and fine herbs, char-grilled to juicy tenderness and served with seasoned potato wedges.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top mt-auto">
+                            <span class="price-tag">UGX 28,000</span>
+                            <span class="text-muted small">Not available today</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </main>
 
-    <!-- ── Footer ── -->
+    <!-- Footer -->
     <footer class="py-3 bg-white border-top text-center text-muted small mt-5">
         <div class="container">
             Ponnus Restaurant &copy; 2026 &mdash;
-            <a href="index.html" class="text-decoration-none" style="color:var(--primary);">Home</a>
+            <a href="index.html" class="text-decoration-none" style="color: var(--primary-color);">Home</a>
         </div>
     </footer>
 
+    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/app.js"></script>
     <script>
-        const MENU = [
-            { id:1, name:'Chicken Pilau',   category:'Main Course', price:15000, availability:'Available',   description:'Fragrant spiced basmati rice cooked with tender chicken, tomatoes, and aromatic pilau spices.' },
-            { id:2, name:'Beef Burger',     category:'Fast Food',   price:18000, availability:'Available',   description:'Juicy flame-grilled beef patty served in a toasted sesame bun with crisp lettuce and tomato.' },
-            { id:3, name:'Vegetable Pizza', category:'Pizza',       price:25000, availability:'Available',   description:'Crispy thin-crust artisan pizza topped with rich tomato sauce, mozzarella, bell peppers, and mushrooms.' },
-            { id:4, name:'Fresh Juice',     category:'Beverages',   price:5000,  availability:'Available',   description:'Freshly extracted chilled seasonal passion fruit and orange juice with mint.' },
-            { id:5, name:'Grilled Chicken', category:'Main Course', price:28000, availability:'Unavailable', description:'Half chicken slow-marinated in garlic, lemon, and fine herbs, char-grilled to juicy tenderness.' },
-        ];
+        function filterCategory(cat) {
+            document.querySelectorAll('.filter-pill').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById('btn-' + cat.replace(/\s+/g, '-'));
+            if (activeBtn) activeBtn.classList.add('active');
 
-        const catStyles = {
-            'Main Course': { bg:'#eff6ff', text:'#1d4ed8', border:'#bfdbfe' },
-            'Fast Food':   { bg:'#fefce8', text:'#854d0e', border:'#fde68a' },
-            'Pizza':       { bg:'#fdf4ff', text:'#7e22ce', border:'#e9d5ff' },
-            'Beverages':   { bg:'#f0fdf4', text:'#166534', border:'#bbf7d0' },
-        };
+            let visibleCount = 0;
+            document.querySelectorAll('.dish-card').forEach(card => {
+                if (cat === 'All' || card.getAttribute('data-category') === cat) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
 
-        function renderGrid() {
-            const grid = document.getElementById('menuGrid');
-            grid.innerHTML = MENU.map(item => {
-                const c = catStyles[item.category] || { bg:'#f8fafc', text:'#475569', border:'#e2e8f0' };
-                const avail = item.availability === 'Available';
-                return `
-                <div class="col-sm-6 col-lg-4">
-                    <div class="menu-card menu-item-card" data-category="${item.category}">
-                        <!-- Category + Status -->
-                        <div class="d-flex justify-content-between align-items-start mb-3">
-                            <span style="font-size:0.72rem;font-weight:600;padding:0.3rem 0.65rem;border-radius:50px;
-                                         background:${c.bg};color:${c.text};border:1px solid ${c.border};">
-                                ${item.category}
-                            </span>
-                            ${avail
-                                ? `<span class="badge badge-available small" style="border-radius:50px;">
-                                       <i class="bi bi-check-circle me-1"></i>Available
-                                   </span>`
-                                : `<span class="badge badge-unavailable small" style="border-radius:50px;">
-                                       <i class="bi bi-x-circle me-1"></i>Unavailable
-                                   </span>`
-                            }
-                        </div>
-                        <!-- Name -->
-                        <h5 class="fw-bold text-dark mb-2" style="font-size:1rem;">${item.name}</h5>
-                        <!-- Description -->
-                        <p class="text-secondary mb-3 flex-grow-1" style="font-size:0.85rem;line-height:1.55;">
-                            ${item.description}
-                        </p>
-                        <!-- Price + CTA -->
-                        <div class="d-flex justify-content-between align-items-center pt-2 border-top mt-auto">
-                            <span class="price-tag">UGX ${item.price.toLocaleString()}</span>
-                            ${avail
-                                ? `<span class="badge px-3 py-2 rounded-pill fw-semibold"
-                                         style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa;font-size:0.72rem;">
-                                       <i class="bi bi-bag-check me-1"></i>Order Now
-                                   </span>`
-                                : `<span class="text-muted small">Not available today</span>`
-                            }
-                        </div>
-                    </div>
-                </div>`;
-            }).join('');
+            document.getElementById('dishCount').innerText = visibleCount;
+            document.getElementById('categoryLabel').innerHTML = cat === 'All' ? '' : 'in <strong>' + cat + '</strong>';
         }
-
-        renderGrid();
     </script>
 </body>
 </html>

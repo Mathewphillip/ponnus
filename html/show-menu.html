@@ -3,178 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Menu Item — Ponnus Restaurant</title>
+    <title>Chicken Pilau - Ponnus</title>
+
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="app-shell">
 
-    <!-- ══════════ SIDEBAR ══════════ -->
-    <aside class="sidebar">
-        <a href="dashboard.html" class="sidebar-brand">
-            <img src="../public/chef.jpg" alt="Ponnus"><span>PONNUS</span>
-        </a>
-        <div class="sidebar-profile">
-            <img src="../public/chef.jpg" alt="User">
-            <div class="sidebar-profile-info">
-                <div class="sidebar-profile-name">Restaurant Administrator</div>
-                <span class="badge-role">Admin</span>
-            </div>
-        </div>
-        <div class="sidebar-section-label">Menu System</div>
-        <nav>
-            <a href="dashboard.html" class="nav-link"><i class="bi bi-grid-1x2"></i> Dashboard</a>
-            <a href="menu-list.html" class="nav-link active"><i class="bi bi-card-checklist"></i> Menu Items</a>
-            <a href="add-menu.html" class="nav-link"><i class="bi bi-plus-circle"></i> Add New Item</a>
-            <a href="public-menu.html" class="nav-link"><i class="bi bi-shop"></i> Customer Menu</a>
-        </nav>
-        <div class="mt-auto border-top pt-2 pb-3">
-            <a href="index.html" class="btn-logout"><i class="bi bi-box-arrow-right"></i> Log Out</a>
-        </div>
-    </aside>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light-custom sticky-top px-3 py-2">
+        <div class="container-fluid">
+            <!-- Brand Link with Chef Logo -->
+            <a class="navbar-brand d-flex align-items-center gap-2" href="dashboard.html">
+                <img src="chef.jpg" alt="Ponnus Chef" class="rounded-circle shadow-sm" style="width: 38px; height: 38px; object-fit: cover;">
+                <span class="fw-bold fs-5 text-dark" style="letter-spacing: -0.3px;">PONNUS</span>
+                <span class="badge bg-light text-muted border small ms-1">Restaurant</span>
+            </a>
 
-    <!-- ══════════ MAIN AREA ══════════ -->
-    <div class="main-area">
-        <div class="topbar">
-            <div class="d-flex align-items-center gap-3">
-                <button class="btn btn-sm btn-outline-secondary d-md-none" onclick="toggleSidebar()">
-                    <i class="bi bi-list"></i>
-                </button>
-                <span class="topbar-title">Menu Item Detail</span>
-            </div>
-            <div class="topbar-user">
-                <i class="bi bi-person-circle fs-5"></i>
-                <span>Restaurant Administrator</span>
-                <span class="badge-role">Admin</span>
-            </div>
-        </div>
+            <!-- Mobile Toggler -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="page-content">
-            <div class="page-header">
-                <div>
-                    <h4 id="pageTitle">Menu Item Details</h4>
-                    <p class="text-muted">Full information for this dish</p>
+            <!-- Right Side Nav Items -->
+            <div class="d-none d-lg-flex ms-auto align-items-center gap-3">
+                <div class="text-end">
+                    <div class="fw-semibold text-dark small">Restaurant Administrator</div>
+                    <span class="badge badge-role" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa;">
+                        Admin
+                    </span>
                 </div>
-                <a href="menu-list.html" class="btn btn-sm btn-outline-secondary px-3">
-                    <i class="bi bi-arrow-left me-1"></i> Back to Menu List
-                </a>
+
+                <!-- Profile Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;" type="button" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person text-secondary fs-5"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 py-2" aria-labelledby="userMenuButton" style="border-radius: 0.75rem;">
+                        <li class="px-3 py-2 border-bottom mb-1">
+                            <div class="fw-bold text-dark small">Restaurant Administrator</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">admin@ponnus.test</div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2 d-flex align-items-center gap-2 small" href="dashboard.html">
+                                <i class="bi bi-speedometer2 text-muted"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2 d-flex align-items-center gap-2 small" href="menu-list.html">
+                                <i class="bi bi-card-checklist text-muted"></i> Menu Items
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2 d-flex align-items-center gap-2 small" href="public-menu.html">
+                                <i class="bi bi-shop text-muted"></i> Customer Menu
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item py-2 text-danger d-flex align-items-center gap-2 small" href="index.html">
+                                <i class="bi bi-box-arrow-right"></i> Log Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </div>
+    </nav>
 
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="detail-card">
-                        <!-- Coloured header -->
-                        <div class="detail-header d-flex justify-content-between align-items-start flex-wrap gap-3">
-                            <div>
-                                <h5 class="fw-bold mb-1 text-dark" id="dishName">—</h5>
-                                <div id="dishCategoryBadge"></div>
-                            </div>
-                            <div id="dishStatusBadge"></div>
-                        </div>
-
-                        <!-- Detail rows -->
-                        <div class="detail-body">
-                            <div class="detail-row">
-                                <div class="detail-label">ID</div>
-                                <div class="detail-value" id="detailId">—</div>
-                            </div>
-                            <div class="detail-row">
-                                <div class="detail-label">Dish Name</div>
-                                <div class="detail-value fw-semibold" id="detailName">—</div>
-                            </div>
-                            <div class="detail-row">
-                                <div class="detail-label">Category</div>
-                                <div class="detail-value" id="detailCategory">—</div>
-                            </div>
-                            <div class="detail-row">
-                                <div class="detail-label">Description</div>
-                                <div class="detail-value text-secondary" id="detailDescription">—</div>
-                            </div>
-                            <div class="detail-row">
-                                <div class="detail-label">Price</div>
-                                <div class="detail-value fw-bold fs-5" id="detailPrice"
-                                     style="color:var(--primary);">—</div>
-                            </div>
-                            <div class="detail-row">
-                                <div class="detail-label">Availability</div>
-                                <div class="detail-value" id="detailAvailability">—</div>
-                            </div>
-                            <div class="detail-row">
-                                <div class="detail-label">Created</div>
-                                <div class="detail-value text-muted" id="detailCreated">—</div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse p-0" id="sidebarMenu">
+                <div class="position-sticky pt-3">
+                    <div class="px-3 pb-3 mb-2 border-bottom">
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="chef.jpg" alt="User" class="rounded-circle shadow-sm flex-shrink-0" style="width: 38px; height: 38px; object-fit: cover;">
+                            <div style="min-width: 0; line-height: 1.3;">
+                                <div class="text-dark fw-bold small" style="word-break: break-word; white-space: normal;">Restaurant Administrator</div>
+                                <span class="badge mt-1" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; font-size: 0.7rem;">
+                                    Admin
+                                </span>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Action buttons -->
-                        <div class="px-4 pb-4 d-flex gap-2 flex-wrap">
-                            <a id="editBtn" href="edit-menu.html" class="btn btn-brand px-4">
+                    <div class="px-3 py-1 text-uppercase text-muted fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">
+                        Menu System
+                    </div>
+
+                    <ul class="nav flex-column mb-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="bi bi-grid-1x2"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="menu-list.html">
+                                <i class="bi bi-card-checklist"></i>
+                                <span>Menu Items</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add-menu.html">
+                                <i class="bi bi-plus-circle"></i>
+                                <span>Add New Item</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="public-menu.html">
+                                <i class="bi bi-shop"></i>
+                                <span>Customer Menu</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mt-2">
+                            <a href="index.html" class="nav-link text-danger border-0 bg-transparent w-100 text-start">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Log Out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <div class="container-fluid p-0">
+                    <!-- Breadcrumb & Header -->
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+                        <div>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb mb-1 small">
+                                    <li class="breadcrumb-item"><a href="dashboard.html" class="text-decoration-none">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="menu-list.html" class="text-decoration-none">Menu Items</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page" id="breadcrumbName">Chicken Pilau</li>
+                                </ol>
+                            </nav>
+                            <h3 class="fw-bold text-dark mb-0">Menu Item Details</h3>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="menu-list.html" class="btn btn-outline-secondary btn-sm">
+                                <i class="bi bi-arrow-left me-1"></i> Back to Menu
+                            </a>
+                            <a href="edit-menu.html?id=1" class="btn btn-brand btn-sm" id="editHeaderBtn">
                                 <i class="bi bi-pencil-square me-1"></i> Edit Item
                             </a>
-                            <button onclick="handleDelete()" class="btn btn-outline-danger px-4">
-                                <i class="bi bi-trash3 me-1"></i> Delete Item
+                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="openDeleteModal()">
+                                <i class="bi bi-trash me-1"></i> Delete
                             </button>
                         </div>
                     </div>
+
+                    <div class="row g-4">
+                        <!-- Main Item Details Card -->
+                        <div class="col-lg-8">
+                            <div class="card border-0 shadow-sm rounded-4 bg-white mb-4">
+                                <div class="card-body p-4 p-md-5">
+                                    <!-- Category & Availability Header -->
+                                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                                        <span class="badge px-3 py-2 fs-6 fw-semibold" style="background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa;" id="dishCategory">
+                                            <i class="bi bi-tag-fill me-1"></i> Main Course
+                                        </span>
+
+                                        <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 fs-6 fw-semibold" id="dishAvailability">
+                                            <i class="bi bi-check-circle-fill me-1"></i> Available for Ordering
+                                        </span>
+                                    </div>
+
+                                    <!-- Dish Title & Price -->
+                                    <div class="d-flex flex-wrap justify-content-between align-items-baseline gap-2 mb-4">
+                                        <h2 class="display-6 fw-bold text-dark mb-0" id="dishTitle">Chicken Pilau</h2>
+                                        <span class="display-6 fw-bold text-success" id="dishPrice">UGX 15,000</span>
+                                    </div>
+
+                                    <hr class="my-4 text-muted opacity-25">
+
+                                    <!-- Description Section -->
+                                    <h6 class="fw-bold text-dark text-uppercase small mb-2" style="letter-spacing: 0.5px;">Description</h6>
+                                    <p class="text-secondary lh-lg mb-4" id="dishDescription">
+                                        Fragrant spiced basmati rice cooked with tender chicken, tomatoes, and aromatic pilau spices.
+                                    </p>
+
+                                    <hr class="my-4 text-muted opacity-25">
+
+                                    <!-- Specifications Grid -->
+                                    <div class="row g-3">
+                                        <div class="col-sm-6 col-md-3">
+                                            <div class="p-3 bg-light rounded-3 text-center">
+                                                <span class="text-muted small d-block mb-1">Item ID</span>
+                                                <span class="fw-bold text-dark fs-5" id="specId">#1</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                            <div class="p-3 bg-light rounded-3 text-center">
+                                                <span class="text-muted small d-block mb-1">Category</span>
+                                                <span class="fw-bold text-dark fs-6" id="specCategory">Main Course</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                            <div class="p-3 bg-light rounded-3 text-center">
+                                                <span class="text-muted small d-block mb-1">Price</span>
+                                                <span class="fw-bold text-success fs-5" id="specPrice">UGX 15,000</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                            <div class="p-3 bg-light rounded-3 text-center">
+                                                <span class="text-muted small d-block mb-1">Availability</span>
+                                                <span class="fw-bold text-success fs-6" id="specAvailability">Available</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer bg-light border-top px-4 px-md-5 py-3 text-muted small d-flex flex-wrap justify-content-between align-items-center">
+                                    <span>
+                                        <i class="bi bi-clock-history me-1"></i>
+                                        Created: Nov 19, 2026 06:30 PM
+                                    </span>
+                                    <span>
+                                        <i class="bi bi-arrow-repeat me-1"></i>
+                                        Last Updated: Nov 19, 2026 06:30 PM
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kitchen Overview Panel -->
+                        <div class="col-lg-4">
+                            <div class="card border-0 shadow-sm rounded-4 bg-white p-4 mb-4">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <img src="chef.jpg" alt="Ponnus Chef" class="rounded-circle shadow-sm" style="width: 55px; height: 55px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">Ponnus Kitchen</h6>
+                                        <small class="text-muted">Item Quick Actions</small>
+                                    </div>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <a href="edit-menu.html?id=1" class="btn btn-brand btn-sm" id="editSidebarBtn">
+                                        <i class="bi bi-pencil-square me-2"></i> Edit Dish Details
+                                    </a>
+                                    <a href="add-menu.html" class="btn btn-outline-secondary btn-sm">
+                                        <i class="bi bi-plus-circle me-2"></i> Add Another Item
+                                    </a>
+                                    <a href="menu-list.html" class="btn btn-outline-secondary btn-sm">
+                                        <i class="bi bi-card-checklist me-2"></i> Return to Menu List
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title fw-bold" id="deleteConfirmModalLabel">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i> Confirm Item Deletion
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="mb-1">Are you sure you want to permanently delete this menu item?</p>
+                    <div class="alert alert-warning mt-3 mb-0">
+                        <strong>Dish Name:</strong> <span id="deleteItemName" class="fw-bold">Chicken Pilau</span>
+                    </div>
+                    <small class="text-muted mt-2 d-block">This action will remove the record from the database.</small>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="menu-list.html" class="btn btn-danger">
+                        <i class="bi bi-trash me-1"></i> Yes, Delete Item
+                    </a>
                 </div>
             </div>
         </div>
-
-        <footer class="text-center text-muted small py-3 border-top bg-white">
-            Ponnus Restaurant Menu Management &copy; 2026
-        </footer>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/app.js"></script>
-<script>
-    const DATA = [
-        { id:1, name:'Chicken Pilau',   category:'Main Course', price:15000, availability:'Available',   description:'Fragrant spiced basmati rice cooked with tender chicken, tomatoes, and aromatic pilau spices.' },
-        { id:2, name:'Beef Burger',     category:'Fast Food',   price:18000, availability:'Available',   description:'Juicy flame-grilled beef patty served in a toasted sesame bun with crisp lettuce and tomato.' },
-        { id:3, name:'Vegetable Pizza', category:'Pizza',       price:25000, availability:'Available',   description:'Crispy thin-crust artisan pizza topped with rich tomato sauce, mozzarella, bell peppers, and mushrooms.' },
-        { id:4, name:'Fresh Juice',     category:'Beverages',   price:5000,  availability:'Available',   description:'Freshly extracted chilled seasonal passion fruit and orange juice with mint.' },
-        { id:5, name:'Grilled Chicken', category:'Main Course', price:28000, availability:'Unavailable', description:'Half chicken slow-marinated in garlic, lemon, and fine herbs, char-grilled to juicy tenderness.' },
-    ];
-    const catColors = {
-        'Main Course': 'badge-main-course',
-        'Fast Food': 'badge-fast-food',
-        'Pizza': 'badge-pizza',
-        'Beverages': 'badge-beverages'
-    };
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const DISHES = {
+            1: { name: 'Chicken Pilau', category: 'Main Course', price: 'UGX 15,000', avail: 'Available', desc: 'Fragrant spiced basmati rice cooked with tender chicken, tomatoes, and aromatic pilau spices.' },
+            2: { name: 'Beef Burger', category: 'Fast Food', price: 'UGX 18,000', avail: 'Available', desc: 'Juicy flame-grilled beef patty served in a toasted sesame bun with crisp lettuce and tomato.' },
+            3: { name: 'Vegetable Pizza', category: 'Pizza', price: 'UGX 25,000', avail: 'Available', desc: 'Crispy thin-crust artisan pizza topped with rich tomato sauce, mozzarella, bell peppers, black olives, onions, and mushrooms.' },
+            4: { name: 'Fresh Juice', category: 'Beverages', price: 'UGX 5,000', avail: 'Available', desc: 'Freshly extracted chilled seasonal passion fruit and orange juice with mint, 100% natural with no artificial preservatives.' },
+            5: { name: 'Grilled Chicken', category: 'Main Course', price: 'UGX 28,000', avail: 'Unavailable', desc: 'Half chicken slow-marinated in garlic, lemon, and fine herbs, char-grilled to juicy tenderness and served with seasoned potato wedges.' }
+        };
 
-    const id = parseInt(new URLSearchParams(location.search).get('id')) || 1;
-    const item = DATA.find(d => d.id === id) || DATA[0];
+        const params = new URLSearchParams(window.location.search);
+        const dishId = parseInt(params.get('id')) || 1;
+        const item = DISHES[dishId] || DISHES[1];
 
-    document.getElementById('pageTitle').textContent  = item.name;
-    document.getElementById('dishName').textContent   = item.name;
-    document.getElementById('detailId').textContent   = item.id;
-    document.getElementById('detailName').textContent = item.name;
-    document.getElementById('detailDescription').textContent = item.description;
-    document.getElementById('detailPrice').textContent = `UGX ${item.price.toLocaleString()}`;
-    document.getElementById('detailCreated').textContent = 'Nov 19, 2026';
-    document.getElementById('editBtn').href = `edit-menu.html?id=${item.id}`;
+        document.getElementById('breadcrumbName').innerText = item.name;
+        document.getElementById('dishTitle').innerText = item.name;
+        document.getElementById('dishPrice').innerText = item.price;
+        document.getElementById('dishDescription').innerText = item.desc;
+        document.getElementById('specId').innerText = '#' + dishId;
+        document.getElementById('specCategory').innerText = item.category;
+        document.getElementById('specPrice').innerText = item.price;
+        document.getElementById('specAvailability').innerText = item.avail;
+        document.getElementById('deleteItemName').innerText = item.name;
+        document.getElementById('editHeaderBtn').href = 'edit-menu.html?id=' + dishId;
+        document.getElementById('editSidebarBtn').href = 'edit-menu.html?id=' + dishId;
+        document.getElementById('dishCategory').innerHTML = '<i class="bi bi-tag-fill me-1"></i> ' + item.category;
 
-    // Category badge
-    document.getElementById('dishCategoryBadge').innerHTML =
-        `<span class="badge ${catColors[item.category]||'badge-other'}" style="border-radius:50px;font-size:0.75rem;">${item.category}</span>`;
-    document.getElementById('detailCategory').innerHTML =
-        `<span class="badge ${catColors[item.category]||'badge-other'}" style="border-radius:50px;">${item.category}</span>`;
-
-    // Status badge
-    const avail = item.availability === 'Available';
-    const statusHtml = avail
-        ? `<span class="badge badge-available" style="border-radius:50px;"><i class="bi bi-check-circle me-1"></i>Available</span>`
-        : `<span class="badge badge-unavailable" style="border-radius:50px;"><i class="bi bi-x-circle me-1"></i>Unavailable</span>`;
-    document.getElementById('dishStatusBadge').innerHTML = statusHtml;
-    document.getElementById('detailAvailability').innerHTML = statusHtml;
-
-    function handleDelete() {
-        if (confirmDelete(item.name)) {
-            window.location.href = `menu-list.html?flash=${encodeURIComponent('Menu item "' + item.name + '" deleted successfully!')}`;
+        if (item.avail === 'Available') {
+            document.getElementById('dishAvailability').className = 'badge bg-success-subtle text-success border border-success-subtle px-3 py-2 fs-6 fw-semibold';
+            document.getElementById('dishAvailability').innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> Available for Ordering';
+            document.getElementById('specAvailability').className = 'fw-bold text-success fs-6';
+        } else {
+            document.getElementById('dishAvailability').className = 'badge bg-secondary-subtle text-secondary border border-secondary-subtle px-3 py-2 fs-6 fw-semibold';
+            document.getElementById('dishAvailability').innerHTML = '<i class="bi bi-slash-circle-fill me-1"></i> Currently Unavailable';
+            document.getElementById('specAvailability').className = 'fw-bold text-secondary fs-6';
         }
-    }
-</script>
+
+        function openDeleteModal() {
+            var modal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
+            modal.show();
+        }
+    </script>
 </body>
 </html>
